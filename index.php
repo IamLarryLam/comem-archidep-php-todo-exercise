@@ -44,7 +44,7 @@ if (isset($_POST['action'])) {
 
       $id = $_POST['id'];
       if(is_numeric($id)) {
-        $updateQuery = ''; // IMPLEMENT ME
+        $updateQuery = "UPDATE `todo` SET `done` = IF(`todo`.`done` = '0', '1', '0') WHERE `todo`.`id` = $id"; // IMPLEMENT ME | Done : Larry 08.10.2020 
         if(!$db->query($updateQuery)) {
           die(print_r($db->errorInfo(), true));
         }
@@ -60,7 +60,7 @@ if (isset($_POST['action'])) {
 
       $id = $_POST['id'];
       if(is_numeric($id)) {
-        $deleteQuery = ''; // IMPLEMENT ME
+        $deleteQuery = "DELETE FROM `todo` WHERE `todo`.`id` =  $id"; // IMPLEMENT ME | Done : Larry 08.10.2020
         if(!$db->query($deleteQuery)) {
           die(print_r($db->errorInfo(), true));
         }
